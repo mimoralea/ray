@@ -3,6 +3,8 @@
 build --compilation_mode=opt
 build --action_env=PATH
 build --action_env=PYTHON_BIN_PATH
+# Enable build:windows, build:linux, build:macos, build:freebsd
+build --enable_platform_specific_config
 # Warnings should be errors
 build --per_file_copt=-src/ray/thirdparty/hiredis/dict.c,-.*/arrow/util/logging.cc@-Werror
 # Ignore warnings for protobuf generated files and external projects.
