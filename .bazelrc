@@ -1,3 +1,4 @@
+# Useful reference: https://github.com/google/iree/blob/master/.bazelrc
 # build config
 build --compilation_mode=opt
 build --action_env=PATH
