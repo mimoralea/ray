@@ -57,18 +57,18 @@ def ray_deps_setup():
         tag = "v2.2.2",
     )
 
-    new_git_repository(
+    native.local_repository(
         name = "com_github_google_glog",
-        build_file = "@//bazel:BUILD.glog",
-        commit = "5c576f78c49b28d89b23fbb1fc80f54c879ec02e",
-        remote = "https://github.com/google/glog",
+        #build_file = "@//bazel:BUILD.glog",  # TODO: Use this!
+        #commit = "",
+        path = "../glog",
     )
 
-    new_git_repository(
+    native.new_local_repository(
         name = "plasma",
         build_file = "@//bazel:BUILD.plasma",
-        commit = "0aad5a08e539a7b7f4abd4ee57e08fe78957d412",
-        remote = "https://github.com/apache/arrow",
+        #commit = "",
+        path = "../arrow",
     )
 
     new_git_repository(
@@ -93,24 +93,23 @@ def ray_deps_setup():
     )
 
     # OpenCensus depends on jupp0r/prometheus-cpp
-    http_archive(
+    git_repository(
         name = "com_github_jupp0r_prometheus_cpp",
-        strip_prefix = "prometheus-cpp-master",
-
+        commit = "5c45ba7ddc0585d765a43d136764dd2a542bd495",
         # TODO(qwang): We should use the repository of `jupp0r` here when this PR
         # `https://github.com/jupp0r/prometheus-cpp/pull/225` getting merged.
-        urls = ["https://github.com/jovany-wang/prometheus-cpp/archive/master.zip"],
+        remote = "https://github.com/ray-project/prometheus-cpp.git",
     )
 
-    git_repository(
+    native.local_repository(
         name = "com_github_grpc_grpc",
-        commit = "93e8830070e9afcbaa992c75817009ee3f4b63a0",
-        remote = "https://github.com/grpc/grpc.git",
+        #commit = "",
+        path = "../grpc",
     )
 
-    http_archive(
+    native.local_repository(
         name = "build_stack_rules_proto",
-        urls = ["https://github.com/stackb/rules_proto/archive/b93b544f851fdcd3fc5c3d47aee3b7ca158a8841.tar.gz"],
-        sha256 = "c62f0b442e82a6152fcd5b1c0b7c4028233a9e314078952b6b04253421d56d61",
-        strip_prefix = "rules_proto-b93b544f851fdcd3fc5c3d47aee3b7ca158a8841",
+        #remote = "https://github.com/stackb/rules_proto.git",
+        #commit = "",
+        path = "../rules_proto",
     )
